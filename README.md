@@ -4,6 +4,8 @@ This is made to run a battery storage with a victron inverter with an existing F
 The value of the Fronius Smartmeter is read over the local network via Modbus TCP from the datamanager of the inverter.
 The value is then used to control the victron inverter in mode 3.
 
+With tasmota_control.py extra loads can be controled if sufficient power is in the system available.
+
 everything can be run as a script on a machine (e.g. raspberrypi) in the local network.
 
 ## Installation
