@@ -1,11 +1,13 @@
 #!/bin/python
+# done by Julius Bergmann
+# 08/03/2023
 
 from pymodbus.client import ModbusTcpClient
 from pymodbus.payload import BinaryPayloadDecoder
 from pymodbus.constants import Endian
 import numpy as np
 import time
-from my_logging import logger
+from my_logging import fronius_logger
 from param_init import FRONIUS_IP_ADDRESS, RECONNECT_INTERVAL
 
 FRONIUS_PORT = 502
@@ -14,7 +16,7 @@ def ensure_connection(client):
     while not client.connect():
         SERVER_IP = client.host
         SERVER_PORT = client.port
-        logger.warning(f"Unable to connect to the Modbus server at {SERVER_IP}:{SERVER_PORT}. Retrying...")
+        fronius_logger.warning(f"Unable to connect to the Modbus server at {SERVER_IP}:{SERVER_PORT}. Retrying...")
         time.sleep(RECONNECT_INTERVAL)
     return True
 
@@ -40,9 +42,9 @@ def read_power_from_fronius():
         client.close()
 
         # Ergebnisse anzeigen
-        logger.info(f"the power that goes into the house is {round(result, 2)} Watt")
+        #logger.info(f"the power that goes into the house is {round(result, 2)} Watt")
     except Exception as e:
-        logger.error(f"Error while reading fronius: {e}")
+        fronius_logger.error(f"Error while reading fronius: {e}")
         read_accomplished = False
         result = 0
     return result, read_accomplished
