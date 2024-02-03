@@ -10,3 +10,7 @@ everything can be run as a script on a machine (e.g. raspberrypi) in the local n
 To use it, just change the IP-Addresses of the Fronius inverter and the Victron inverter in the param_init.py file.
 Then run the script main.py on your machine.
 
+## Information
+
+Link to the register list from Victron:
+https://www.victronenergy.com/upload/documents/CCGX-Modbus-TCP-register-list-3.10.xlsx
